@@ -4,8 +4,9 @@
       <el-form-item label="邀请拼团">
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://127.0.0.1:9934/post/"
           :show-file-list="false"
+          :on-success="handleAvatarSuccess"
         >
           <img v-if="imageUrl" :src="imageUrl" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -21,6 +22,7 @@
         <el-upload
           class="avatar-uploader"
           :show-file-list="false"
+          :on-success="handleAvatarSuccess"
         >
           <img v-if="imageUrl" :src="imageUrl" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -158,6 +160,7 @@
 export default {
   data() {
     return {
+      imageUrl:null,
       form: {
         invite_group: {
           picture: "",
@@ -193,7 +196,11 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log('form data ', JSON.stringify(this.form));
+      console.log("form data ", JSON.stringify(this.form));
+    },
+    handleAvatarSuccess(res, file) {
+      console.log('res.imgUrl ', res.imgUrl)
+      this.imageUrl = res.imgUrl;
     }
   }
 };
@@ -201,7 +208,7 @@ export default {
 
 <style>
 .border-line {
-  border: solid 1px #409eff;
+  border: dashed 1px #e1e1e1;
   margin-bottom: 10px;
   padding: 10px;
 }
