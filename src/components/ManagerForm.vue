@@ -6,9 +6,9 @@
           class="avatar-uploader"
           action="http://127.0.0.1:9934/post/"
           :show-file-list="false"
-          :on-success="handleAvatarSuccess"
+          :on-success="handleGroupSuccess"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <img v-if="form.invite_group.picture" :src="form.invite_group.picture" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
@@ -21,10 +21,15 @@
       <el-form-item label="我-邀请好友">
         <el-upload
           class="avatar-uploader"
+          action="http://127.0.0.1:9934/post/"
           :show-file-list="false"
-          :on-success="handleAvatarSuccess"
+          :on-success="handleInviteFriendSuccess"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <img
+            v-if="form.me_invite_friend.picture"
+            :src="form.me_invite_friend.picture"
+            class="avatar"
+          >
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
@@ -35,10 +40,15 @@
       <el-form-item label="我-邀请好友-链接">
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://127.0.0.1:9934/post/"
           :show-file-list="false"
+          :on-success="handleInviteFriendLinkSuccess"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <img
+            v-if="form.me_invite_friend.invite_link.picture"
+            :src="form.me_invite_friend.invite_link.picture"
+            class="avatar"
+          >
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
@@ -48,10 +58,15 @@
       <el-form-item label="我-邀请好友-说明">
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://127.0.0.1:9934/post/"
           :show-file-list="false"
+          :on-success="handleInviteFriendInfoSuccess"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <img
+            v-if="form.me_invite_friend.invite_info.picture"
+            :src="form.me_invite_friend.invite_info.picture"
+            class="avatar"
+          >
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
@@ -64,30 +79,33 @@
       <el-form-item label="零元抢规则">
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://127.0.0.1:9934/post/"
           :show-file-list="false"
+          :on-success="handleruleZeroSuccess"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <img v-if="form.rule.zero_picture" :src="form.rule.zero_picture" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
-      <el-form-item label="3D规则">
+      <el-form-item label="Common规则">
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://127.0.0.1:9934/post/"
           :show-file-list="false"
+          :on-success="handleruleCommSuccess"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <img v-if="form.rule.common_picture" :src="form.rule.common_picture" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
       <el-form-item label="奖励规则">
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://127.0.0.1:9934/post/"
           :show-file-list="false"
+          :on-success="handleruleAwardSuccess"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <img v-if="form.awards.picture" :src="form.awards.picture" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
@@ -97,50 +115,59 @@
       <el-form-item label="首页-零元背景">
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://127.0.0.1:9934/post/"
           :show-file-list="false"
+          :on-success="handlehomeZeroBgSuccess"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <img v-if="form.zerobg" :src="form.zerobg" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
       <el-form-item label="首页-超值精选图">
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://127.0.0.1:9934/post/"
           :show-file-list="false"
+          :on-success="handlehomeActiveBigSuccess"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <img
+            v-if="form.home_activity_big_picture"
+            :src="form.home_activity_big_picture"
+            class="avatar"
+          >
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
       <el-form-item label="首页-3D-special">
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://127.0.0.1:9934/post/"
           :show-file-list="false"
+          :on-success="handlehome3DSepcialSuccess"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <img v-if="form.threed_spectial" :src="form.threed_spectial" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
       <el-form-item label="首页-3D-header">
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://127.0.0.1:9934/post/"
           :show-file-list="false"
+          :on-success="handlehome3DHeaderSuccess"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <img v-if="form.threed_header" :src="form.threed_header" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
       <el-form-item label="首页-banner">
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://127.0.0.1:9934/post/"
           :show-file-list="false"
+          :on-success="handlehomeBannerSuccess"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <img v-if="form.banner" :src="form.banner" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
@@ -160,7 +187,7 @@
 export default {
   data() {
     return {
-      imageUrl:null,
+      imageUrl: null,
       form: {
         invite_group: {
           picture: "",
@@ -198,9 +225,49 @@ export default {
     onSubmit() {
       console.log("form data ", JSON.stringify(this.form));
     },
-    handleAvatarSuccess(res, file) {
-      console.log('res.imgUrl ', res.imgUrl)
-      this.imageUrl = res.imgUrl;
+    handleGroupSuccess(res, file) {
+      console.log("res.imgUrl ", res.imgUrl);
+      this.form.invite_group.picture = res.imgUrl;
+    },
+    handleInviteFriendSuccess(res, file) {
+      console.log("res.imgUrl ", res.imgUrl);
+      this.form.me_invite_friend.picture = res.imgUrl;
+    },
+    handleInviteFriendLinkSuccess(res, file) {
+      console.log("res.imgUrl ", res.imgUrl);
+      this.form.me_invite_friend.invite_link.picture = res.imgUrl;
+    },
+    handleInviteFriendInfoSuccess(res, file) {
+      console.log("res.imgUrl ", res.imgUrl);
+      this.form.me_invite_friend.invite_info.picture = res.imgUrl;
+    },
+    
+    handleruleZeroSuccess(res, file) {
+      console.log("res.imgUrl ", res.imgUrl);
+      this.form.rule.zero_picture = res.imgUrl;
+    },
+    handleruleCommSuccess(res, file) {
+      console.log("res.imgUrl ", res.imgUrl);
+      this.form.rule.common_picture = res.imgUrl;
+    },
+    handleruleAwardSuccess(res, file) {
+      console.log("res.imgUrl ", res.imgUrl);
+      this.form.awards.picture = res.imgUrl;
+    },
+    handlehomeZeroBgSuccess(res, file) {
+      this.form.zerobg = res.imgUrl;
+    },
+    handlehomeActiveBigSuccess(res, file) {
+      this.form.home_activity_big_picture = res.imgUrl;
+    },
+    handlehome3DSepcialSuccess(res, file) {
+      this.form.threed_spectial = res.imgUrl;
+    },
+    handlehome3DHeaderSuccess(res, file) {
+      this.form.threed_header = res.imgUrl;
+    },
+    handlehomeBannerSuccess(res, file) {
+      this.form.banner = res.imgUrl;
     }
   }
 };
