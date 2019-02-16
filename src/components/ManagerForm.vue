@@ -4,7 +4,7 @@
       <el-form-item label="邀请拼团">
         <el-upload
           class="avatar-uploader"
-          action="http://127.0.0.1:9934/post/"
+          :action="uploadUrl"
           :show-file-list="false"
           :on-success="handleGroupSuccess"
         >
@@ -21,7 +21,7 @@
       <el-form-item label="我-邀请好友">
         <el-upload
           class="avatar-uploader"
-          action="http://127.0.0.1:9934/post/"
+          :action="uploadUrl"
           :show-file-list="false"
           :on-success="handleInviteFriendSuccess"
         >
@@ -40,7 +40,7 @@
       <el-form-item label="我-邀请好友-链接">
         <el-upload
           class="avatar-uploader"
-          action="http://127.0.0.1:9934/post/"
+          :action="uploadUrl"
           :show-file-list="false"
           :on-success="handleInviteFriendLinkSuccess"
         >
@@ -58,7 +58,7 @@
       <el-form-item label="我-邀请好友-说明">
         <el-upload
           class="avatar-uploader"
-          action="http://127.0.0.1:9934/post/"
+          :action="uploadUrl"
           :show-file-list="false"
           :on-success="handleInviteFriendInfoSuccess"
         >
@@ -79,7 +79,7 @@
       <el-form-item label="零元抢规则">
         <el-upload
           class="avatar-uploader"
-          action="http://127.0.0.1:9934/post/"
+          :action="uploadUrl"
           :show-file-list="false"
           :on-success="handleruleZeroSuccess"
         >
@@ -90,7 +90,7 @@
       <el-form-item label="Common规则">
         <el-upload
           class="avatar-uploader"
-          action="http://127.0.0.1:9934/post/"
+          :action="uploadUrl"
           :show-file-list="false"
           :on-success="handleruleCommSuccess"
         >
@@ -101,7 +101,7 @@
       <el-form-item label="奖励规则">
         <el-upload
           class="avatar-uploader"
-          action="http://127.0.0.1:9934/post/"
+          :action="uploadUrl"
           :show-file-list="false"
           :on-success="handleruleAwardSuccess"
         >
@@ -115,7 +115,7 @@
       <el-form-item label="首页-零元背景">
         <el-upload
           class="avatar-uploader"
-          action="http://127.0.0.1:9934/post/"
+          :action="uploadUrl"
           :show-file-list="false"
           :on-success="handlehomeZeroBgSuccess"
         >
@@ -126,7 +126,7 @@
       <el-form-item label="首页-超值精选图">
         <el-upload
           class="avatar-uploader"
-          action="http://127.0.0.1:9934/post/"
+          :action="uploadUrl"
           :show-file-list="false"
           :on-success="handlehomeActiveBigSuccess"
         >
@@ -141,7 +141,7 @@
       <el-form-item label="首页-3D-special">
         <el-upload
           class="avatar-uploader"
-          action="http://127.0.0.1:9934/post/"
+          :action="uploadUrl"
           :show-file-list="false"
           :on-success="handlehome3DSepcialSuccess"
         >
@@ -152,7 +152,7 @@
       <el-form-item label="首页-3D-header">
         <el-upload
           class="avatar-uploader"
-          action="http://127.0.0.1:9934/post/"
+          :action="uploadUrl"
           :show-file-list="false"
           :on-success="handlehome3DHeaderSuccess"
         >
@@ -163,7 +163,7 @@
       <el-form-item label="首页-banner">
         <el-upload
           class="avatar-uploader"
-          action="http://127.0.0.1:9934/post/"
+          :action="uploadUrl"
           :show-file-list="false"
           :on-success="handlehomeBannerSuccess"
         >
@@ -187,7 +187,7 @@
 export default {
   data() {
     return {
-      imageUrl: null,
+      uploadUrl:'http://127.0.0.1:9934/post/',
       form: {
         invite_group: {
           picture: "",
