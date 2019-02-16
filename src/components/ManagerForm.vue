@@ -223,50 +223,43 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log("form data ", JSON.stringify(this.form));
+      // console.log("form data ", JSON.stringify(this.form));
     },
-    handleGroupSuccess(res, file) {
-      console.log("res.imgUrl ", res.imgUrl);
+    handleGroupSuccess(res) {
       this.form.invite_group.picture = res.imgUrl;
     },
-    handleInviteFriendSuccess(res, file) {
-      console.log("res.imgUrl ", res.imgUrl);
+    handleInviteFriendSuccess(res) {
       this.form.me_invite_friend.picture = res.imgUrl;
     },
-    handleInviteFriendLinkSuccess(res, file) {
-      console.log("res.imgUrl ", res.imgUrl);
+    handleInviteFriendLinkSuccess(res) {
       this.form.me_invite_friend.invite_link.picture = res.imgUrl;
     },
-    handleInviteFriendInfoSuccess(res, file) {
-      console.log("res.imgUrl ", res.imgUrl);
+    handleInviteFriendInfoSuccess(res) {
       this.form.me_invite_friend.invite_info.picture = res.imgUrl;
     },
-    
-    handleruleZeroSuccess(res, file) {
-      console.log("res.imgUrl ", res.imgUrl);
+
+    handleruleZeroSuccess(res) {
       this.form.rule.zero_picture = res.imgUrl;
     },
-    handleruleCommSuccess(res, file) {
-      console.log("res.imgUrl ", res.imgUrl);
+    handleruleCommSuccess(res) {
       this.form.rule.common_picture = res.imgUrl;
     },
-    handleruleAwardSuccess(res, file) {
-      console.log("res.imgUrl ", res.imgUrl);
+    handleruleAwardSuccess(res) {
       this.form.awards.picture = res.imgUrl;
     },
-    handlehomeZeroBgSuccess(res, file) {
+    handlehomeZeroBgSuccess(res) {
       this.form.zerobg = res.imgUrl;
     },
-    handlehomeActiveBigSuccess(res, file) {
+    handlehomeActiveBigSuccess(res) {
       this.form.home_activity_big_picture = res.imgUrl;
     },
-    handlehome3DSepcialSuccess(res, file) {
+    handlehome3DSepcialSuccess(res) {
       this.form.threed_spectial = res.imgUrl;
     },
-    handlehome3DHeaderSuccess(res, file) {
+    handlehome3DHeaderSuccess(res) {
       this.form.threed_header = res.imgUrl;
     },
-    handlehomeBannerSuccess(res, file) {
+    handlehomeBannerSuccess(res) {
       this.form.banner = res.imgUrl;
     }
   }
